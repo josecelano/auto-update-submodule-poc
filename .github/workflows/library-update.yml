@@ -37,6 +37,7 @@ jobs:
           passphrase: ${{ secrets.PASSPHRASE }}
           git_user_signingkey: true
           git_commit_gpgsign: true
+          git_config_global: true
 
       - name: GPG user IDs
         run: |
@@ -44,9 +45,6 @@ jobs:
           echo "keyid:       ${{ steps.import-gpg.outputs.keyid }}"
           echo "name:        ${{ steps.import-gpg.outputs.name }}"
           echo "email:       ${{ steps.import-gpg.outputs.email }}"
-          git config --global user.email
-          git config --global user.name
-          git config --global user.signingkey
 
       - name: Update library submodule
         id: update-library
